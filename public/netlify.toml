@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/api/*"
+  to = "http://api-qynn.onrender.com/api/"
+  status = 200
