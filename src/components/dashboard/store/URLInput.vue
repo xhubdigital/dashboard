@@ -50,7 +50,7 @@ export default class URLInput extends Vue {
   @Model('modelValue') urlModel!: string;
 
   get websiteSulfix() {
-    return '.hubx.app';
+    return '.hub4u.app';
   }
 
   copyURL() {

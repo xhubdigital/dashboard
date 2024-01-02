@@ -1,9 +1,9 @@
 {
-  "name": "hubx-dashboard",
+  "name": "hub4u-store",
   "version": "0.0.1",
   "description": "Crie seu cardápio online",
-  "productName": "Hubx",
-  "author": "Joao Paulo Martins <joao@kadro.io>",
+  "productName": "Hub4u",
+  "author": "Francismar Araujo <francismarsaraujo@gmail.com>",
   "private": true,
   "scripts": {
     "build": "quasar build -m pwa",

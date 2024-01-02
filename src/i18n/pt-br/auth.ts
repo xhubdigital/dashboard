@@ -8,7 +8,7 @@ export default {
   },
   login: 'Entrar',
   loginCaption: 'Gerencie sua loja de forma fácil e rápida através do ' +
-    'portal Hubx',
+    'portal Hub4u',
   email: 'E-mail',
   password: 'Senha',
   forgotPassword: 'Esqueci minha senha',
@@ -18,7 +18,7 @@ export default {
   signUpAccount: 'Cadastre sua Loja',
   signUp: 'Cadastrar',
   signUpCaption: 'Gerencie sua loja de forma fácil e rápida através do '+
-    'portal Hubx',
+    'portal Hub4u',
   ownerName: 'Nome do responsável',
   confirmPassword: 'Confirmar senha',
   storeName: 'Nome da loja',
@@ -30,7 +30,7 @@ export default {
     notAcceptedTerms: {
       message: 'Termos e condições de uso',
       caption: 'Você precisa aceitar os termos e condições para registar ' +
-        'na Hubx',
+        'na Hub4u',
     },
     loginInvalid: {
       message: 'Usuário não encontrado.',

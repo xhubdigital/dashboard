@@ -12,7 +12,7 @@
           />
         </div>
         <div class="logo">
-          <img src="~assets/logos/hubx.png">
+          <img src="~assets/logos/hub4u.png">
         </div>
       </div>
       <q-space />
