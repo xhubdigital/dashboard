@@ -1,4 +1,4 @@
-# Quasar App (hub4u-store)
+# Quasar App (hub4u-dashboard)
 
 A Quasar Framework app
 

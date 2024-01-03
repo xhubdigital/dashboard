@@ -248,7 +248,7 @@ module.exports = configure(function(ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'hub4u-store',
+        appId: 'hub4u-dashboard',
       },
 
       chainWebpack(/* chain */) {
