@@ -1,2 +1,2 @@
-/api/*    https://api.hub4u.app/api/:splat  200
+/api/*    http://35.160.120.126:3000/api/:splat  200
 /*        /index.html                       200
