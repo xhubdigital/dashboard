@@ -1,203 +1,260 @@
 <template>
-  <div class="sign-up">
-    <div class="h-title title">
-      {{ $t('auth.signUp') }}
-    </div>
-    <div class="caption">
-      {{ $t('auth.signUpCaption') }}
-    </div>
-    <v-form
-      v-slot="{ handleSubmit }"
-      :initial-values="{ acceptTerms: false }"
+  <v-form
+    v-slot="{ handleSubmit/*, setFieldValue */}"
+    :initial-values="initialValues"
+  >
+    <q-form
+      ref="formulario"
+      class="row q-py-xl"
+      @submit="handleSubmit(signUp)"
     >
-      <q-form
-        class="row q-py-xl"
-        @submit="handleSubmit(signUp)"
+      <q-stepper
+        ref="stepper"
+        v-model="step"
+        alternative-labels
+        color="primary"
+        animated
       >
-        <div class="col-12">
-          <v-field
-            v-slot="{ field, handleChange, errorMessage }"
-            :label="$t('auth.ownerName')"
-            name="ownerName"
-            rules="required"
-          >
-            <text-input
-              :label="$t('auth.ownerName')"
-              name="ownerName"
-              :model-value="field.value"
-              :error="!!errorMessage"
-              :error-message="errorMessage"
-              @update:model-value="handleChange"
+        <q-step
+          :name="1"
+          :title="$t('auth.owner.title')"
+          icon="settings"
+          :done="step > 1"
+          :header-nav="step > 1"
+        >
+          <q-page-container>
+            <q-page class="row justify-center items-center">
+              <div class="row justify-center q-pa-md">
+                <div class="col-12 text-center self-center">
+                  <div class="q-pa-lg q-pa-md-xl flex flex-center">
+                    <div class="content">
+                      <div class="sign-in">
+                        <div class="h-title title q-pa-xs-md">
+                          {{ $t('auth.owner.title') }}
+                        </div>
+                        <div class="caption">
+                          {{ $t('auth.owner.caption') }}
+                        </div>
+                        <div class="row q-py-xl row q-col-gutter-md">
+                          <div class="col-12 col-sm-6">
+                            <v-field
+                              v-slot="{ handleChange, errorMessage }"
+                              :label="$t('auth.owner.name')"
+                              name="name"
+                              rules="required"
+                            >
+                              <text-input
+                                v-model="name"
+                                name="name"
+                                :label="$t('auth.owner.name')"
+                                :error="!!errorMessage"
+                                :error-message="errorMessage"
+                                @update:model-value="handleChange"
+                              />
+                            </v-field>
+                          </div>
+                          <div class="col-12 col-sm-6">
+                            <v-field
+                              v-slot="{ handleChange, errorMessage }"
+                              :label="$t('auth.owner.taxpayerRegistry')"
+                              name="taxpayerRegistry"
+                              rules="required|min:14"
+                            >
+                              <text-input
+                                v-model="taxpayerRegistry"
+                                :label="$t('auth.owner.taxpayerRegistry')"
+                                mask="###.###.###-##"
+                                name="taxpayerRegistry"
+                                :error="!!errorMessage"
+                                :error-message="errorMessage"
+                                @update:model-value="handleChange"
+                              />
+                            </v-field>
+                          </div>
+                          <div class="col-12 col-sm-6">
+                            <v-field
+                              v-slot="{ handleChange, errorMessage }"
+                              :label="$t('auth.owner.email')"
+                              name="email"
+                              rules="required|email"
+                            >
+                              <text-input
+                                v-model="email"
+                                :label="$t('auth.owner.email')"
+                                name="email"
+                                :error="!!errorMessage"
+                                :error-message="errorMessage"
+                                @update:model-value="handleChange"
+                              />
+                            </v-field>
+                          </div>
+                          <div class="col-12 col-sm-6">
+                            <v-field
+                              v-slot="{ handleChange, errorMessage }"
+                              :label="$t('auth.owner.phone')"
+                              name="phone"
+                              rules="required|min:14"
+                            >
+                              <text-input
+                                v-model="phone"
+                                :label="$t('auth.owner.phone')"
+                                name="phone"
+                                mask="(##)#####-####"
+                                :error="!!errorMessage"
+                                :error-message="errorMessage"
+                                @update:model-value="handleChange"
+                              />
+                            </v-field>
+                          </div>
+                          <div class="col-12 q-py-md">
+                            <q-stepper-navigation>
+                              <q-btn
+                                class="full-width"
+                                color="primary"
+                                unelevated
+                                type="submit"
+                                no-caps
+                                :label="step === 3 ? 'Finish' : 'Continue'"
+                              />
+                            </q-stepper-navigation>
+                          </div>
+                        </div>
+                        <div class="sign-in-text">
+                          {{ $t('auth.alreadyHaveAccount') }}
+                          <router-link
+                            class="sign-in-link"
+                            to="/"
+                          >
+                            {{ $t('auth.signInAccount') }}
+                          </router-link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </q-page>
+          </q-page-container>
+        </q-step>
+        <q-step
+          :name="2"
+          title="Create an ad group"
+          caption="Optional"
+          icon="create_new_folder"
+          :done="step > 2"
+          :header-nav="step > 2"
+        >
+          <q-stepper-navigation>
+            <q-btn
+              color="primary"
+              label="Continue"
+              @click="() => { done2 = true; step = 3 }"
             />
-          </v-field>
-        </div>
-        <div class="col-12">
-          <v-field
-            v-slot="{ field, handleChange, errorMessage }"
-            :label="$t('auth.email')"
-            name="email"
-            rules="required"
-          >
-            <text-input
-              :label="$t('auth.email')"
-              name="email"
-              :model-value="field.value"
-              :error="!!errorMessage"
-              :error-message="errorMessage"
-              @update:model-value="handleChange"
+            <q-btn
+              flat
+              color="primary"
+              label="Back"
+              class="q-ml-sm"
+              @click="step = 1"
             />
-          </v-field>
-        </div>
-        <div class="col-12">
-          <v-field
-            v-slot="{ field, handleChange, errorMessage }"
-            :label="$t('common.password')"
-            name="password"
-            rules="required|min:6"
-          >
-            <text-input
-              :label="$t('common.password')"
-              name="password"
-              :type="passwordFieldType"
-              :model-value="field.value"
-              :error="!!errorMessage"
-              :error-message="errorMessage"
-              @update:model-value="handleChange"
-            >
-              <template #append>
-                <q-icon
-                  class="cursor-pointer"
-                  :name="passwordFieldIcon"
-                  @click="togglePasswordVisibility"
-                />
-              </template>
-            </text-input>
-          </v-field>
-        </div>
-        <div class="col-12">
-          <v-field
-            v-slot="{ field, handleChange, errorMessage }"
-            :label="$t('auth.confirmPassword')"
-            name="confirmPassword"
-            rules="required|confirmed:@password"
-          >
-            <text-input
-              :label="$t('auth.confirmPassword')"
-              name="confirmPassword"
-              :type="passwordFieldType2"
-              :model-value="field.value"
-              :error="!!errorMessage"
-              :error-message="errorMessage"
-              @update:model-value="handleChange"
-            >
-              <template #append>
-                <q-icon
-                  class="cursor-pointer"
-                  :name="passwordFieldIcon2"
-                  @click="togglePassword2Visibility"
-                />
-              </template>
-            </text-input>
-          </v-field>
-        </div>
-        <div class="col-12">
-          <v-field
-            v-slot="{ field, handleChange, errorMessage }"
-            :label="$t('auth.storeName')"
-            name="storeName"
-            rules="required"
-          >
-            <text-input
-              :label="$t('auth.storeName')"
-              name="storeName"
-              :model-value="field.value"
-              :error="!!errorMessage"
-              :error-message="errorMessage"
-              @update:model-value="handleChange"
+          </q-stepper-navigation>
+        </q-step>
+        <q-step
+          :name="3"
+          title="Create an ad"
+          icon="add_comment"
+          :header-nav="step > 3"
+        >
+          <q-stepper-navigation>
+            <q-btn
+              color="primary"
+              label="Finish"
+              @click="done3 = true"
             />
-          </v-field>
-        </div>
-        <div class="col-12">
-          <v-field
-            v-slot="{ field, handleChange }"
-            :label="$t('auth.acceptTerms')"
-            name="acceptTerms"
-          >
-            <q-checkbox
-              :model-value="field.value"
-              @update:model-value="handleChange"
-            >
-              <i18n-t keypath="auth.acceptTerms">
-                <a
-                  href="https://hub4u.app/termo_e_condicoes.html"
-                  target="_blank"
-                  class="terms-link"
-                  @click.stop
-                >
-                  {{ $t('auth.terms') }}
-                </a>
-              </i18n-t>
-            </q-checkbox>
-          </v-field>
-        </div>
-        <div class="col-12 q-py-md">
-          <q-btn
-            :label="$t('auth.signUp')"
-            class="full-width"
-            type="submit"
-            color="primary"
-            unelevated
-            no-caps
-            :loading="saving"
-          />
-        </div>
-      </q-form>
-    </v-form>
-    <div class="sign-in-text">
-      {{ $t('auth.alreadyHaveAccount') }}
-      <router-link
-        class="sign-in-link"
-        to="/"
-      >
-        {{ $t('auth.signInAccount') }}
-      </router-link>
-    </div>
-  </div>
+            <q-btn
+              class="q-ml-sm"
+              color="primary"
+              label="Back"
+              flat
+              @click="step = 2"
+            />
+          </q-stepper-navigation>
+        </q-step>
+      </q-stepper>
+    </q-form>
+  </v-form>
 </template>
 
 <script lang="ts">
-import { Vue, Options } from 'vue-property-decorator';
-import { mapActions } from 'vuex';
-import { Form, Field } from 'vee-validate';
-
+import { Vue, Options, Ref } from 'vue-property-decorator';
+import { mapActions, mapMutations } from 'vuex';
+import { Form, Field, FormActions } from 'vee-validate';
+import { QInput } from 'quasar';
 import { DEFAULT_DASHBOARD_ROUTE } from 'src/router/routes';
 import { IRegisterData } from '@api/auth';
-
 import TextInput from '@components/form/TextInput.vue';
-
+import {
+  getAddressByZipCode,
+  updateRestaurant,
+} from '@api/restaurants';
+import { IRestaurant } from '@models/IRestaurant';
+import { ILoadable } from '@helpers/ILoadable';
+import { convertEntityFiles } from '@helpers/format/convertEntityFiles';
+import UrlInput from '@components/dashboard/store/URLInput.vue';
+import SelectInput from '@components/form/SelectInput.vue';
+// import { email } from '@vee-validate/rules';
 interface IRegisterForm extends IRegisterData {
   acceptTerms: boolean;
 }
-
+export enum Specialty {
+  Restaurant = 'restaurant',
+  Pharmacy = 'parmacy',
+}
 @Options({
   components: {
     TextInput,
     VForm: Form,
     VField: Field,
+    UrlInput,
+    SelectInput,
   },
   methods: {
     ...mapActions('user', [
       'register',
     ]),
+    ...mapMutations('user', [
+      'updateRestaurant',
+    ]),
   },
 })
 export default class SignUp extends Vue {
+  @Ref('addressNumberInput') addressNumberInputRef!: QInput;
   register!: (registerData: IRegisterData) => Promise<void>;
-
+  updateRestaurant!: (restaurant: IRestaurant) => void;
+  restaurant: ILoadable<IRestaurant | null> = {
+    data: null,
+    loading: false,
+  };
+  name: string = '';
+  taxpayerRegistry: string = '';
+  email: string = '';
+  phone: string = '';
+  step: number = 1;
   saving: boolean = false;
-
   passwordVisible: boolean = false;
   passwordVisible2: boolean = false;
+  loadingAddressByZipCode: boolean = false;
+
+  get initialValues() {
+    return {
+      acceptTerms: false,
+      name: this.name,
+      taxpayerRegistry: this.taxpayerRegistry,
+      email: this.email,
+      phone: this.phone,
+      step: 1,
+    };
+  }
 
   get passwordFieldType() {
     return this.passwordVisible ? 'text' : 'password';
@@ -215,6 +272,28 @@ export default class SignUp extends Vue {
     return this.passwordVisible2 ? 'mdi-eye-off' : 'mdi-eye';
   }
 
+  get specialtyOptions() {
+    return [
+      {
+        label: this.$t('auth.store.specialtyOptions.restaurant'),
+        value: Specialty.Restaurant,
+      },
+      {
+        label: this.$t('auth.store.specialtyOptions.pharmacy'),
+        value: Specialty.Pharmacy,
+      },
+    ];
+  }
+
+
+  get bankOptions() {
+    return [
+      {
+        'value': '001',
+        'label': 'Banco do Brasil S.A.',
+      },
+    ];
+  }
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
   }
@@ -224,6 +303,17 @@ export default class SignUp extends Vue {
   }
 
   async signUp(registerData: IRegisterForm) {
+
+    this.name = registerData.name;
+    this.taxpayerRegistry = registerData.taxpayerRegistry;
+    this.email = registerData.email;
+    this.phone = registerData.phone;
+
+    if(this.step === 1){
+      this.step = 2;
+      return false;
+    }
+
     if (!registerData.acceptTerms) {
       this.$q.notify({
         type: 'negative',
@@ -233,7 +323,6 @@ export default class SignUp extends Vue {
 
       return;
     }
-
     try {
       this.saving = true;
 
@@ -246,17 +335,91 @@ export default class SignUp extends Vue {
       this.saving = false;
     }
   }
+
+  async onChangeZipCode(
+    handleChange: (value: string) => void,
+    updateFormValue: (key: string, value: unknown) => void,
+    zipCode: string,
+  ) {
+    handleChange(zipCode);
+    if (zipCode.length === 9) {
+      try {
+        this.loadingAddressByZipCode = true;
+        const address = await getAddressByZipCode(zipCode.replace('-', ''));
+        updateFormValue('restaurant.address', {
+          id: this.restaurant.data?.address?.id,
+          ...address,
+        });
+        this.addressNumberInputRef.focus();
+      } finally {
+        this.loadingAddressByZipCode = false;
+      }
+    }
+  }
+  async updateStore(
+    restaurant: IRestaurant,
+    actions: FormActions<Record<string, unknown>>,
+  ) {
+    try {
+      const updatedRestaurant = await convertEntityFiles(
+        restaurant,
+        ['banner', 'picture'],
+      );
+
+      this.restaurant.data = await updateRestaurant(updatedRestaurant);
+
+      setTimeout(actions.resetForm);
+
+      this.updateRestaurant(this.restaurant.data);
+
+      this.$q.notify({
+        type: 'positive',
+        message:
+          this.$t('dashboard.store.notifications.updateStoreSuccess.message'),
+      });
+    } catch {
+      this.$q.notify({
+        type: 'negative',
+        message: this.$t(
+          'dashboard.store.notifications.updateStoreGenericError.message',
+        ),
+        caption: this.$t(
+          'dashboard.store.notifications.updateStoreGenericError.caption',
+        ),
+      });
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.sign-up {
+.q-stepper{
+  box-shadow: none;
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.q-stepper__header--border{
+  border-color: #fff !important;
+}
+
+.q-stepper__nav{
+  padding: 0;
+}
+
+.q-page{
+  min-height: auto !important;
+}
+
+.sign-in {
   .title {
     font-size: 3.75rem;
   }
 
   .caption {
-    font-size: 14px;
+    font-size: 1rem;
     letter-spacing: 0.1px;
     color: #545563;
   }

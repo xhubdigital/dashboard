@@ -11,6 +11,8 @@ export interface IRegisterData {
   name: string;
   email: string;
   password: string;
+  taxpayerRegistry: string;
+  phone: string;
   restaurant: {
     name: string,
   };
