@@ -40,12 +40,10 @@ export default {
     number: 'Número',
     complement: 'Complemento',
   },
-  signUp: 'Cadastrar',
-  signUpCaption: 'Gerencie sua loja de forma fácil e rápida através do '+
-    'portal Hub4u',
   store:{
+    title: 'Informações da loja',
     caption: 'Preencha com os dados do seu negócio.',
-    employerIdentificationNumber: 'CNPJ',
+    employerIdentification: 'CNPJ',
     name: 'Nome da loja (como aparecerá para o cliente)',
     url: 'URL da Loja',
     phone: 'Telefone ou celular da loja',
@@ -56,6 +54,7 @@ export default {
     },
   },
   payment: {
+    title: 'Dados bancários',
     caption: 'Preencha as informações da conta bancária vinculada ao CNPJ '+
       'para receber o pagamento pelos pedidos.',
     bank: 'Em qual banco sua loja possui conta?',
@@ -67,11 +66,18 @@ export default {
     account: 'Conta',
     number: 'Dígito verificador',
   },
-  confirmPassword: 'Confirmar senha',
-  storeName: 'Nome da loja',
-  acceptTerms: 'Declaro que estou de acordo com os termos estabelecidos no '+
-    'contrato e aceito os {0}',
-  terms: 'termos e condições',
+  finish: {
+    title: 'Finalizar',
+    caption: 'Crie uma senha para acessar o sistema.',
+    password: 'Senha',
+    confirmPassword: 'Confirmar senha',
+    acceptTerms: 'Declaro que estou de acordo com os termos estabelecidos no '+
+      'contrato e aceito os {0}',
+    terms: 'termos e condições',
+  },
+  signUp: 'Cadastrar',
+  signUpCaption: 'Gerencie sua loja de forma fácil e rápida através do '+
+    'portal Hub4u',
   alreadyHaveAccount: 'Já possui cadastro?',
   signInAccount: 'Entrar',
   notifications: {

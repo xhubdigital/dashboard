@@ -15,6 +15,9 @@ export interface IRegisterData {
   phone: string;
   restaurant: {
     name: string,
+    address: {
+      streetName: string,
+    }
   };
 }
 
