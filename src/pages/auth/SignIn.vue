@@ -1,120 +1,108 @@
 <template>
-  <q-page-container>
-    <q-page class="row justify-center items-center">
-      <div class="row justify-center q-pa-md">
-        <div class="col-12 text-center self-center">
-          <div class="q-pa-lg q-pa-md-xl flex flex-center">
-            <div class="content">
-              <div class="sign-in">
-                <div class="h-title title q-pa-xs-md">
-                  {{ $t('auth.login') }}
-                </div>
-                <div class="caption">
-                  {{ $t('auth.loginCaption') }}
-                </div>
-                <v-form
-                  v-slot="{ handleSubmit }"
-                  :initial-values="{ keepAuthenticated: true }"
-                >
-                  <q-form
-                    class="row q-py-xl"
-                    @submit="handleSubmit(signIn)"
-                  >
-                    <div class="col-12">
-                      <v-field
-                        v-slot="{ field, handleChange, errorMessage }"
-                        :label="$t('auth.email')"
-                        name="email"
-                        rules="required|email"
-                      >
-                        <text-input
-                          :label="$t('auth.email')"
-                          name="email"
-                          :model-value="field.value"
-                          :error="!!errorMessage"
-                          :error-message="errorMessage"
-                          @update:model-value="handleChange"
-                        />
-                      </v-field>
-                    </div>
-                    <div class="col-12">
-                      <v-field
-                        v-slot="{ field, handleChange, errorMessage }"
-                        :label="$t('common.password')"
-                        name="password"
-                        rules="required"
-                      >
-                        <text-input
-                          :label="$t('common.password')"
-                          name="password"
-                          :type="passwordFieldType"
-                          :model-value="field.value"
-                          :error="!!errorMessage"
-                          :error-message="errorMessage"
-                          @update:model-value="handleChange"
-                        >
-                          <template #append>
-                            <q-icon
-                              class="cursor-pointer"
-                              :name="passwordFieldIcon"
-                              @click="togglePasswordVisibility"
-                            />
-                          </template>
-                        </text-input>
-                      </v-field>
-                    </div>
-                    <!-- <div class="col-12">
-                      <v-field
-                        v-slot="{ field, handleChange }"
-                        :label="$t('auth.keepAuthenticated')"
-                        name="keepAuthenticated"
-                      >
-                        <q-checkbox
-                          :label="$t('auth.keepAuthenticated')"
-                          :model-value="field.value"
-                          @update:model-value="handleChange"
-                        />
-                      </v-field>
-                    </div> -->
-                    <div class="col-12 q-py-md">
-                      <q-btn
-                        :label="$t('auth.signIn')"
-                        class="full-width"
-                        type="submit"
-                        color="primary"
-                        unelevated
-                        no-caps
-                        :loading="authenticating"
-                      />
-                    </div>
-                    <div class="col-12">
-                      <q-btn
-                        :label="$t('auth.forgotPassword')"
-                        class="full-width text-bold"
-                        color="primary"
-                        flat
-                        no-caps
-                        @click="forgotPassword"
-                      />
-                    </div>
-                  </q-form>
-                </v-form>
-                <div class="register-text">
-                  {{ $t('auth.noAccountYet') }}
-                  <router-link
-                    class="register-link"
-                    to="/sign-up"
-                  >
-                    {{ $t('auth.signUpAccount') }}
-                  </router-link>
-                </div>
-              </div>
-            </div>
-          </div>
+  <div class="sign-in">
+    <div class="h-title title">
+      {{ $t('auth.login') }}
+    </div>
+    <div class="caption">
+      {{ $t('auth.loginCaption') }}
+    </div>
+    <v-form
+      v-slot="{ handleSubmit }"
+      :initial-values="{ keepAuthenticated: true }"
+    >
+      <q-form
+        class="row q-py-xl"
+        @submit="handleSubmit(signIn)"
+      >
+        <div class="col-12">
+          <v-field
+            v-slot="{ field, handleChange, errorMessage }"
+            :label="$t('auth.email')"
+            name="email"
+            rules="required"
+          >
+            <text-input
+              :label="$t('auth.email')"
+              name="email"
+              :model-value="field.value"
+              :error="!!errorMessage"
+              :error-message="errorMessage"
+              @update:model-value="handleChange"
+            />
+          </v-field>
         </div>
-      </div>
-    </q-page>
-  </q-page-container>
+        <div class="col-12">
+          <v-field
+            v-slot="{ field, handleChange, errorMessage }"
+            :label="$t('common.password')"
+            name="password"
+            rules="required"
+          >
+            <text-input
+              :label="$t('common.password')"
+              name="password"
+              :type="passwordFieldType"
+              :model-value="field.value"
+              :error="!!errorMessage"
+              :error-message="errorMessage"
+              @update:model-value="handleChange"
+            >
+              <template #append>
+                <q-icon
+                  class="cursor-pointer"
+                  :name="passwordFieldIcon"
+                  @click="togglePasswordVisibility"
+                />
+              </template>
+            </text-input>
+          </v-field>
+        </div>
+        <!-- <div class="col-12">
+          <v-field
+            v-slot="{ field, handleChange }"
+            :label="$t('auth.keepAuthenticated')"
+            name="keepAuthenticated"
+          >
+            <q-checkbox
+              :label="$t('auth.keepAuthenticated')"
+              :model-value="field.value"
+              @update:model-value="handleChange"
+            />
+          </v-field>
+        </div> -->
+        <div class="col-12 q-py-md">
+          <q-btn
+            :label="$t('auth.signIn')"
+            class="full-width"
+            type="submit"
+            color="primary"
+            unelevated
+            no-caps
+            :loading="authenticating"
+          />
+        </div>
+        <div class="col-12">
+          <q-btn
+            :label="$t('auth.forgotPassword')"
+            class="full-width text-bold"
+            color="primary"
+            flat
+            no-caps
+            @click="forgotPassword"
+          />
+        </div>
+      </q-form>
+    </v-form>
+    <div class="register-text">
+      {{ $t('auth.noAccountYet') }}
+      <router-link
+        class="register-link"
+        to="/sign-up"
+      >
+        {{ $t('auth.signUpAccount') }}
+      </router-link>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -194,7 +182,7 @@ export default class SignIn extends Vue {
   }
 
   .caption {
-    font-size: 1rem;
+    font-size: 14px;
     letter-spacing: 0.1px;
     color: #545563;
   }

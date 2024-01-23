@@ -30,12 +30,12 @@ import { Vue } from 'vue-property-decorator';
 export default class MainLayout extends Vue {
   get links() {
     return [
-      {
-        title: 'Dashboard',
-        icon: 'mdi-view-dashboard',
-        link: '/dashboard',
-        exact: true,
-      },
+      // {
+      //   title: 'Dashboard',
+      //   icon: 'mdi-view-dashboard',
+      //   link: '/dashboard',
+      //   exact: true,
+      // },
       {
         title: 'Loja',
         caption: 'Perfil da sua loja',

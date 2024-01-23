@@ -1,6 +1,6 @@
 import { RouteRecordRaw } from 'vue-router';
 
-export const DEFAULT_DASHBOARD_ROUTE = '/dashboard';
+export const DEFAULT_DASHBOARD_ROUTE = '/dashboard/store';
 
 const routes: RouteRecordRaw[] = [
   {

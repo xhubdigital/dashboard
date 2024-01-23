@@ -5,7 +5,7 @@ export default {
     caption: 'Configure os produtos da sua loja',
     mainMenu: 'Cardápio principal',
     complements: 'Complementos',
-    mainMenuTitle: 'Seu cardápio é sua vitrine de produtos no Hub4u',
+    mainMenuTitle: 'Seu cardápio é sua vitrine de produtos no Hubx',
     mainMenuSubtitle: {
       label: '{categories} • {products}',
       categories: 'Sem categorias | 1 categoria | {count} categorias',
@@ -44,7 +44,7 @@ export default {
     editingCategory: 'Alterar categoria',
     creatingCategory: 'Criar nova categoria',
     categoryName: 'Nome do grupo',
-    categoriesTitle: 'Seu cardápio é sua vitrine de produtos no Hub4u',
+    categoriesTitle: 'Seu cardápio é sua vitrine de produtos no Hubx',
     complementsSubtitle: {
       label: '{groups} • {complements}',
       groups: 'Sem grupo de complementos | 1 grupo de complementos ' +
