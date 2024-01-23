@@ -119,7 +119,7 @@ module.exports = configure(function(ctx) {
 
       proxy: {
         '/api': {
-          // target: 'https://api.hubx.app',
+          // target: 'https://api.hub4u.app',
           target: 'http://localhost:3000',
           changeOrigin: true,
         },
@@ -186,8 +186,8 @@ module.exports = configure(function(ctx) {
       },
 
       manifest: {
-        name: 'Hubx',
-        short_name: 'Hubx',
+        name: 'Hub4u',
+        short_name: 'Hub4u',
         description: 'Usamos tecnologia acessível para melhor a experiência ' +
           'do varejo brasileiro.',
         display: 'standalone',
@@ -248,7 +248,7 @@ module.exports = configure(function(ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'hubx-dashboard',
+        appId: 'hub4u-dashboard',
       },
 
       chainWebpack(/* chain */) {

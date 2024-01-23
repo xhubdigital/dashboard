@@ -129,7 +129,7 @@
             >
               <i18n-t keypath="auth.acceptTerms">
                 <a
-                  href="https://hubx.app/termo_e_condicoes.html"
+                  href="https://hub4u.app/termo_e_condicoes.html"
                   target="_blank"
                   class="terms-link"
                   @click.stop
