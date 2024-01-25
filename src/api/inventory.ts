@@ -40,10 +40,11 @@ export async function updateInventoryItem(
 export async function updateInventoryItemAmount(
   id: string,
   change: number,
+  price: number,
 ): Promise<IInventoryItem> {
   const response = await api.patch<IInventoryItem>(
     `inventory/items/${id}/amount`,
-    { change },
+    { change, price },
   );
 
   return response.data;

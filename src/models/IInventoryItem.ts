@@ -26,6 +26,7 @@ export interface IInventoryItem {
   label: string;
   picture?: string;
   amount: number;
+  price: number;
   unit: IInventoryItemUnit;
   history: IInventoryItemHistory[];
   createdAt: Date;

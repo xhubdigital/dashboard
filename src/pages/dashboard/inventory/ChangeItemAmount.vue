@@ -64,6 +64,23 @@
                   />
                 </v-field>
               </div>
+              <div class="col-12">
+                <v-field
+                  v-slot="{ field, handleChange, errorMessage }"
+                  :label="$t('dashboard.inventory.itemPrice')"
+                  name="price"
+                  rules="required"
+                >
+                  <currency-input
+                    :label="$t('dashboard.inventory.itemPrice')"
+                    name="price"
+                    :model-value="field.value"
+                    :error="!!errorMessage"
+                    :error-message="errorMessage"
+                    @update:model-value="handleChange"
+                  />
+                </v-field>
+              </div>
             </div>
           </div>
         </template>
@@ -97,9 +114,11 @@ import { IInventoryItem } from '@models/IInventoryItem';
 import placeHolderImage from '@assets/placeholder-image.png';
 import BasicSideDialog from '@layouts/BasicSideDialog.vue';
 import NumberInput from '@components/form/NumberInput.vue';
+import CurrencyInput from '@components/form/CurrencyInput.vue';
 
 interface FormData {
   change: number;
+  price: number;
 }
 
 @Options({
@@ -108,6 +127,7 @@ interface FormData {
     VField: Field,
     BasicSideDialog,
     NumberInput,
+    CurrencyInput,
   },
 })
 export default class InventoryItemForm extends Vue {
@@ -154,7 +174,7 @@ export default class InventoryItemForm extends Vue {
     try {
       const id = this.$route.params.id as string;
 
-      await updateInventoryItemAmount(id, formData.change);
+      await updateInventoryItemAmount(id, formData.change, formData.price);
 
       this.$q.notify({
         type: 'positive',
