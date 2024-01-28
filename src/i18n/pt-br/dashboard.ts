@@ -39,6 +39,7 @@ export default {
     supplies: 'Insumos',
     suppliesItem: 'Item',
     suppliesQuantity: 'Qtd.',
+    suppliesPrice: 'Preço Unit.',
     createNewSupplyItem: 'Criar novo item "{label}"',
     addSuppliesOption: 'Adicionar insumo',
     editingCategory: 'Alterar categoria',

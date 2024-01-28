@@ -12,6 +12,7 @@ export interface IProductInventoryItem {
   productId: string;
   inventoryItemId: string | null;
   amount: number | null;
+  price: number | null;
 }
 
 export interface IComplementOptionInventoryItem {
@@ -19,6 +20,7 @@ export interface IComplementOptionInventoryItem {
   complementGroupOptionId: string;
   inventoryItemId: string | null;
   amount: number | null;
+  price: number | null;
 }
 
 export interface IInventoryItem {

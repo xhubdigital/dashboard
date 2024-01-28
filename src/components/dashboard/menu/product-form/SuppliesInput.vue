@@ -5,7 +5,7 @@
       :key="index"
       class="row q-col-gutter-md no-wrap"
     >
-      <div class="col-7">
+      <div class="col-6">
         <select-input
           ref="selectInputs"
           v-model="item.inventoryItemId"
@@ -35,10 +35,15 @@
           </template>
         </select-input>
       </div>
-      <div class="col">
+      <div class="col-2">
         <number-input
           v-model="item.amount"
           :placeholder="$t('dashboard.menu.suppliesQuantity')"
+        />
+      </div>
+      <div class="col-3">
+        <currency-input
+          v-model="item.price"
         />
       </div>
       <div class="col-auto">
@@ -75,6 +80,7 @@ import { IComplementOptionInventoryItem, IInventoryItem, IInventoryItemUnit, IPr
 
 import NumberInput from '@components/form/NumberInput.vue';
 import SelectInput from '@components/form/SelectInput.vue';
+import CurrencyInput from '@components/form/CurrencyInput.vue';
 
 interface ItemSelectOptions {
   value: string;
@@ -88,6 +94,7 @@ type IInventoryItemAssoc = IProductInventoryItem
   components: {
     NumberInput,
     SelectInput,
+    CurrencyInput,
   },
   emits: ['new-inventory-item'],
 })
@@ -118,7 +125,7 @@ export default class SuppliesInput extends Vue {
 
   mounted() {
     if (this.entityInventoryItems.length === 0) {
-      this.entityInventoryItems.push({ amount: 1 });
+      this.entityInventoryItems.push({ amount: 1, price: 0 });
     }
   }
 
@@ -133,7 +140,7 @@ export default class SuppliesInput extends Vue {
   }
 
   addItem() {
-    this.entityInventoryItems.push({ amount: 1 });
+    this.entityInventoryItems.push({ amount: 1, price: 0 });
   }
 
   async onNewValue(itemName: string, index: number) {
