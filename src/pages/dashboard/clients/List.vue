@@ -58,11 +58,11 @@ export default class List extends Vue {
 
   get fields() {
     return [
-      // {
-      //   name: 'origin',
-      //   label: this.$t('dashboard.clients.origin'),
-      //   align: 'left',
-      // },
+      {
+        name: 'origin',
+        label: this.$t('dashboard.clients.origin'),
+        align: 'left',
+      },
       {
         name: 'name',
         label: this.$t('common.name'),

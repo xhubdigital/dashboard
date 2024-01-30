@@ -1,8 +1,11 @@
 <template>
-  <div class="sign-up">
-    <div class="h-title title">
-      {{ $t('auth.signUp') }}
+  <div class="sign-up text-center">
+    <div class="logo q-py-xl">
+      <img src="~assets/logos/hub4u.png">
     </div>
+    <!-- <div class="h-title title">
+      {{ $t('auth.signUp') }}
+    </div> -->
     <div class="caption">
       {{ $t('auth.signUpCaption') }}
     </div>
@@ -11,10 +14,10 @@
       :initial-values="{ acceptTerms: false }"
     >
       <q-form
-        class="row q-py-xl"
+        class="row q-col-gutter-md q-py-xl"
         @submit="handleSubmit(signUp)"
       >
-        <div class="col-12">
+        <div class="col-6">
           <v-field
             v-slot="{ field, handleChange, errorMessage }"
             :label="$t('auth.ownerName')"
@@ -31,7 +34,7 @@
             />
           </v-field>
         </div>
-        <div class="col-12">
+        <div class="col-6">
           <v-field
             v-slot="{ field, handleChange, errorMessage }"
             :label="$t('auth.email')"
@@ -48,7 +51,7 @@
             />
           </v-field>
         </div>
-        <div class="col-12">
+        <div class="col-6">
           <v-field
             v-slot="{ field, handleChange, errorMessage }"
             :label="$t('common.password')"
@@ -74,7 +77,7 @@
             </text-input>
           </v-field>
         </div>
-        <div class="col-12">
+        <div class="col-6">
           <v-field
             v-slot="{ field, handleChange, errorMessage }"
             :label="$t('auth.confirmPassword')"

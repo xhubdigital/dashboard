@@ -379,7 +379,7 @@ export default {
       'item do estoque?',
     currentInventory: 'Estoque atual: {amount}',
     totalPrice: 'Preço total: {price}',
-    changeAmount: 'Adicionar Estoque',
+    changeAmount: 'Ajustar Estoque',
     changeHistory: 'Histórico',
     variationField: 'Quantidade',
     updatedByUser: 'Atualizado pelo usuário {user}.',

@@ -1,8 +1,11 @@
 <template>
-  <div class="sign-in">
-    <div class="h-title title">
-      {{ $t('auth.login') }}
+  <div class="sign-in text-center">
+    <div class="logo q-py-xl">
+      <img src="~assets/logos/hub4u.png">
     </div>
+    <!-- <div class="h-title title">
+      {{ $t('auth.login') }}
+    </div> -->
     <div class="caption">
       {{ $t('auth.loginCaption') }}
     </div>

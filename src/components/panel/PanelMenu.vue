@@ -43,6 +43,12 @@ export default class MainLayout extends Vue {
         link: '/dashboard/store',
       },
       {
+        title: 'Clientes',
+        caption: 'Clientes',
+        icon: 'mdi-account-multiple-outline',
+        link: '/dashboard/clients',
+      },
+      {
         title: 'Pedidos',
         caption: 'Acompanhamento de pedidos',
         icon: 'mdi-clipboard-text-outline',
@@ -116,7 +122,7 @@ export default class MainLayout extends Vue {
 
   &.q-router-link--active {
     box-shadow: 0 0 0 2px $primary;
-    background: rgba(255, 87, 34, 0.1);
+    // background: rgba(255, 87, 34, 0.1);
 
     .q-avatar {
       color: #FFF;
