@@ -132,7 +132,7 @@
             >
               <i18n-t keypath="auth.acceptTerms">
                 <a
-                  href="https://hub4u.app/termo_e_condicoes.html"
+                  :href="termsUrl"
                   target="_blank"
                   class="terms-link"
                   @click.stop
@@ -201,6 +201,11 @@ export default class SignUp extends Vue {
 
   passwordVisible: boolean = false;
   passwordVisible2: boolean = false;
+
+  get termsUrl() {
+    const domain = process.env.VUE_APP_WEBSITE_DOMAIN;
+    return `https://${domain}/termo_e_condicoes.html`;
+  }
 
   get passwordFieldType() {
     return this.passwordVisible ? 'text' : 'password';

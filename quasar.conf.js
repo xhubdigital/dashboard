@@ -78,6 +78,8 @@ module.exports = configure(function(ctx) {
 
       env: {
         GOOGLE_MAPS_KEY: process.env.GOOGLE_MAPS_KEY,
+        VUE_APP_API_BASE_URL: process.env.VUE_APP_API_BASE_URL,
+        VUE_APP_WEBSITE_DOMAIN: process.env.VUE_APP_WEBSITE_DOMAIN,
       },
 
       // https://v2.quasar.dev/quasar-cli/handling-webpack

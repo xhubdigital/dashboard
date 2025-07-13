@@ -38,6 +38,8 @@ Publish Directory: ./dist/pwa
 ### Environment Variables Required:
 ```
 GOOGLE_MAPS_KEY=your-google-maps-api-key
+VUE_APP_API_BASE_URL=https://xhub-api.onrender.com/api
+VUE_APP_WEBSITE_DOMAIN=hub4u.app
 NODE_ENV=production
 ```
 

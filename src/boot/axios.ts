@@ -36,7 +36,10 @@ const onRequestError = (callback: RequestErrorCallback) => {
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const api = axios.create({ baseURL: '/api' });
+
+// Use environment variable for API base URL, fallback to relative path
+const apiBaseURL = process.env.VUE_APP_API_BASE_URL || '/api';
+const api = axios.create({ baseURL: apiBaseURL });
 
 api.interceptors.response.use((response) => {
   return response;
