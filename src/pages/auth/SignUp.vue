@@ -203,7 +203,7 @@ export default class SignUp extends Vue {
   passwordVisible2: boolean = false;
 
   get termsUrl() {
-    const domain = process.env.VUE_APP_WEBSITE_DOMAIN;
+    const domain = process.env.VUE_APP_WEBSITE_DOMAIN || 'hub4u.app';
     return `https://${domain}/termo_e_condicoes.html`;
   }
 

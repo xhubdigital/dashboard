@@ -51,7 +51,7 @@ export default class URLInput extends Vue {
 
   get websiteSulfix() {
     // Use environment variable for website domain, fallback to default
-    const domain = process.env.VUE_APP_WEBSITE_DOMAIN;
+    const domain = process.env.VUE_APP_WEBSITE_DOMAIN || 'hub4u.app';
     return `.${domain}`;
   }
 
